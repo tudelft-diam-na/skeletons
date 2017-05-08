@@ -1,0 +1,30 @@
+\pgfplotsset{
+    mark repeat*/.style={
+        scatter,
+        scatter src=x,
+        scatter/@pre marker code/.code={
+            \pgfmathtruncatemacro\usemark{
+                or(mod(\coordindex,#1)==0, (\coordindex==(\numcoords-1))
+            }
+            \ifnum\usemark=0
+                \pgfplotsset{mark=none}
+            \fi
+            },
+            scatter/@post marker code/.code={}
+   }
+}
+\definecolor{blue}{RGB}{0, 114, 189}
+\definecolor{red}{RGB}{212.5000   ,81.2500,   24.5000}
+\definecolor{yellow}{RGB}{ 232.2500 , 173.5000,   31.2500}
+\definecolor{violet}{RGB}{  123.5000 ,  46.0000 , 139.0000}
+\definecolor{green}{RGB}{   116.5000 , 168.5000 ,  47.0000}
+\newcommand\cIDR{red}
+\newcommand\cBICGSTAB{yellow}
+\newcommand\cBICG{violet}
+\newcommand\cGMRES{blue}
+
+\newcommand\mIDR{diamond*}
+\newcommand\mBICGSTAB{otimes}
+\newcommand\mBICG{square*}
+\newcommand\mGMRES{}
+

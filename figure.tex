@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=1.11}
+\input{colors_matlab2015}
+\begin{document}
+\providecommand{\plotdataDir}{plotdata}
+
+\begin{tikzpicture}
+\begin{semilogyaxis}[ 
+              name=plot1,
+              title={Title},
+              width=10.4cm, height=6.4cm,
+              xlabel = {Matrix-vector products},
+              ylabel = {${\|\mathbf{r}\|_2}/{\|\mathbf{b}\|_2}$},
+              line width=0.5,
+              grid = major,
+              legend style = {legend cell align=left, legend pos=north east,font =\tiny},
+              x tick label style={/pgf/number format/.cd,%
+                                  scaled x ticks = false,
+                                  set decimal separator={.},
+                                  set thousands separator={},
+                                  fixed},
+              legend style={at={(0.4,0.3)},anchor=north east}
+            ]
+
+\addplot [color = blue]    table  [x = {mv}, y = {r}] {};
+
+\legend{Data 1}
+\end{semilogyaxis}
+\end{tikzpicture}
+\end{document}
